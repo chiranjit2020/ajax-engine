@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+/* `dark:` utilities follow the resolved theme on <html data-theme>, not only the OS setting. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/*
+ * Design tokens. Components use the semantic Tailwind colours below
+ * (bg-surface, text-muted, border-line, text-accent …), never raw palette values,
+ * so both themes stay consistent.
+ */
+:root {
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --line: #d9dee6;
+  --text: #0f172a;
+  --muted: #536072;
+  --accent: #0e7490;
+  --on-accent: #ffffff;
+  --accent-soft: #e0f1f6;
+  --success: #166534;
+  --success-soft: #e3f4e8;
+  --warning: #92400e;
+  --warning-soft: #fdf1dc;
+  --danger: #b91c1c;
+  --danger-soft: #fbe5e5;
+  --focus: #2563eb;
+  --code-comment: #6b7280;
+  --code-keyword: #8b2fc9;
+  --code-string: #0f766e;
+  --code-function: #1d4ed8;
+  --code-number: #92400e;
+  --code-property: #9f1239;
+  --code-punctuation: #475569;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0a0f1c;
+  --surface: #111827;
+  --surface-2: #182135;
+  --line: #273248;
+  --text: #e6eaf1;
+  --muted: #9ba6b8;
+  --accent: #38c6e0;
+  --on-accent: #06202a;
+  --accent-soft: rgb(56 198 224 / 0.14);
+  --success: #4ade80;
+  --success-soft: rgb(74 222 128 / 0.13);
+  --warning: #fbbf24;
+  --warning-soft: rgb(251 191 36 / 0.13);
+  --danger: #f87171;
+  --danger-soft: rgb(248 113 113 / 0.14);
+  --focus: #93c5fd;
+  --code-comment: #7f8ba0;
+  --code-keyword: #c792ea;
+  --code-string: #7fd8b4;
+  --code-function: #82aaff;
+  --code-number: #f5b971;
+  --code-property: #f0a3b8;
+  --code-punctuation: #a3adbf;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  /* System fonts only: the app must work offline with no external requests. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--bg);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  button:not(:disabled),
+  [role='tab'],
+  summary {
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
