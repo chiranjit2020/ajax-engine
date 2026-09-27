@@ -45,7 +45,9 @@ Start `npm run preview` first. Set `CHROME_PATH` if the browser is not found, an
 
 ## Deploying
 
-`npm run build` produces a fully static site in `dist/`. Host it on any static file server or CDN. Routes use the URL hash (`/#/learn`), so every page works on refresh without server rewrite rules.
+`npm run build` produces a fully static site in `dist/`. Host it on any static file server or CDN, at any path: asset URLs are relative, and routes use the URL hash (`/#/learn`), so every page works on refresh without server rewrite rules.
+
+**GitHub Pages:** `.github/workflows/deploy.yml` runs the tests, builds, and deploys on every push to `main`. In the repository's **Settings → Pages**, set **Source** to **GitHub Actions** (one time). The site is published at https://chiranjit2020.github.io/ajax-engine/.
 
 ## Simulation and real requests
 

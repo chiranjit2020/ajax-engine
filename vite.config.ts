@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  // Relative asset URLs, so the static build works under any path — e.g. GitHub Pages' /ajax-engine/.
+  // Routing uses the URL hash, so no server rewrites are needed either.
+  base: './',
   plugins: [react(), tailwindcss()],
   build: {
     rolldownOptions: {
